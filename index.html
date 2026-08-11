@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Houzhang Fang - Xidian University - Personal Academic Homepage">
+  <meta name="keywords" content="Houzhang Fang, 方厚章, Xidian University, Computer Vision, Infrared UAV, Object Detection, Image Restoration">
+  <meta name="author" content="Houzhang Fang">
+  <title>Houzhang Fang (方厚章)</title>
+
+  <style>
+    :root {
+      --blue: #224b8d;
+      --blue-dark: #183765;
+      --text: #222;
+      --muted: #666;
+      --line: #d8d8d8;
+      --soft: #f5f7fa;
+      --link: #1f5ea8;
+      --news: #b22222;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: #fff;
+      color: var(--text);
+      font-family: Arial, Helvetica, "Microsoft YaHei", sans-serif;
+      font-size: 15px;
+      line-height: 1.58;
+    }
+
+    a {
+      color: var(--link);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .page {
+      display: flex;
+      width: min(1180px, calc(100% - 28px));
+      margin: 18px auto 50px;
+      border-top: 4px solid var(--blue);
+    }
+
+    /* Left menu, inspired by the clean academic layout of the reference site. */
+    .sidebar {
+      width: 180px;
+      flex: 0 0 180px;
+      background: #f0f2f5;
+      border-left: 1px solid #ddd;
+      border-right: 1px solid #ddd;
+      border-bottom: 1px solid #ddd;
+      min-height: 430px;
+    }
+
+    .menu-title {
+      padding: 10px 14px;
+      font-size: 17px;
+      font-weight: 700;
+      color: #fff;
+      background: var(--blue);
+    }
+
+    .menu a {
+      display: block;
+      padding: 9px 14px;
+      color: #222;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .menu a:hover {
+      color: #fff;
+      background: var(--blue);
+      text-decoration: none;
+    }
+
+    .content {
+      flex: 1;
+      min-width: 0;
+      padding: 0 4px 0 28px;
+    }
+
+    h1 {
+      margin: 4px 0 14px;
+      padding-bottom: 7px;
+      border-bottom: 1px solid var(--line);
+      font-size: 30px;
+      line-height: 1.2;
+      font-weight: 500;
+      color: #111;
+    }
+
+    h2 {
+      margin: 28px 0 10px;
+      padding-bottom: 3px;
+      border-bottom: 1px solid var(--line);
+      color: var(--blue);
+      font-size: 22px;
+      line-height: 1.3;
+      font-weight: 600;
+    }
+
+    h3 {
+      margin: 20px 0 8px;
+      color: var(--blue-dark);
+      font-size: 17px;
+    }
+
+    p {
+      margin: 8px 0;
+    }
+
+    ul, ol {
+      margin-top: 8px;
+      padding-left: 25px;
+    }
+
+    li {
+      margin: 5px 0;
+    }
+
+    .profile {
+      display: flex;
+      gap: 22px;
+      align-items: flex-start;
+      margin-bottom: 14px;
+    }
+
+    .portrait-wrap {
+      flex: 0 0 136px;
+      width: 136px;
+    }
+
+    .portrait {
+      width: 130px;
+      height: 173px;
+      object-fit: cover;
+      border: 1px solid #bbb;
+      background: #eee;
+    }
+
+    .portrait-fallback {
+      display: none;
+      width: 130px;
+      height: 173px;
+      border: 1px solid #bbb;
+      background: linear-gradient(145deg, #e9eef6, #cbd8eb);
+      align-items: center;
+      justify-content: center;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 42px;
+      color: var(--blue-dark);
+    }
+
+    .profile-text {
+      padding-top: 2px;
+    }
+
+    .profile-text strong {
+      font-weight: 700;
+    }
+
+    .links {
+      margin-top: 8px;
+    }
+
+    .links a {
+      white-space: nowrap;
+      margin-right: 11px;
+    }
+
+    .note {
+      padding: 9px 12px;
+      border-left: 4px solid var(--blue);
+      background: var(--soft);
+    }
+
+    .news-list li::marker {
+      color: var(--news);
+    }
+
+    .news-date {
+      display: inline-block;
+      min-width: 78px;
+      color: var(--muted);
+      font-family: Consolas, monospace;
+      font-size: 13px;
+    }
+
+    .pubs {
+      padding-left: 26px;
+    }
+
+    .pubs li {
+      margin-bottom: 10px;
+    }
+
+    .me {
+      font-weight: 700;
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 2px;
+    }
+
+    .venue {
+      font-style: italic;
+    }
+
+    .tag {
+      display: inline-block;
+      margin-left: 4px;
+      padding: 0 5px;
+      border-radius: 3px;
+      color: #fff;
+      background: var(--blue);
+      font-size: 11px;
+      line-height: 18px;
+      vertical-align: 1px;
+    }
+
+    .tag.highlight {
+      background: #a43b2f;
+    }
+
+    .footer {
+      margin-top: 34px;
+      padding-top: 10px;
+      border-top: 1px solid var(--line);
+      color: #777;
+      font-size: 12px;
+      text-align: center;
+    }
+
+    @media (max-width: 760px) {
+      .page {
+        display: block;
+        width: calc(100% - 20px);
+        margin-top: 10px;
+      }
+
+      .sidebar {
+        width: 100%;
+        min-height: 0;
+        border: 1px solid #ddd;
+        border-top: 0;
+      }
+
+      .menu {
+        display: flex;
+        flex-wrap: wrap;
+      }
+
+      .menu a {
+        flex: 1 1 auto;
+        border-right: 1px solid #ddd;
+      }
+
+      .content {
+        padding: 18px 4px 0;
+      }
+
+      .profile {
+        gap: 16px;
+      }
+
+      h1 {
+        font-size: 26px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .profile {
+        display: block;
+      }
+
+      .portrait-wrap {
+        margin-bottom: 12px;
+      }
+
+      .news-date {
+        display: block;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+
+    <aside class="sidebar">
+      <div class="menu-title">Menu</div>
+      <nav class="menu" aria-label="Main navigation">
+        <a href="#home">Home</a>
+        <a href="#about">About me</a>
+        <a href="#research">Research</a>
+        <a href="#news">News</a>
+        <a href="#publications">Publications</a>
+        <a href="https://scholar.google.com/citations?user=C7CWyGwAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>
+        <a href="https://orcid.org/0000-0002-7949-8846" target="_blank" rel="noopener">ORCID</a>
+        <a href="https://faculty.xidian.edu.cn/FHZ/zh_CN/index.htm" target="_blank" rel="noopener">Xidian Homepage</a>
+      </nav>
+    </aside>
+
+    <main class="content" id="home">
+      <h1>Houzhang Fang (方厚章)</h1>
+
+      <section class="profile" aria-label="Profile">
+        <div class="portrait-wrap">
+          <!-- Put your portrait at: photos/photo.jpg -->
+          <img
+            class="portrait"
+            src="photos/photo.jpg"
+            alt="Houzhang Fang"
+            onerror="this.style.display='none'; document.getElementById('portraitFallback').style.display='flex';">
+          <div class="portrait-fallback" id="portraitFallback" aria-label="HF portrait placeholder">HF</div>
+        </div>
+
+        <div class="profile-text">
+          <p>
+            <strong>Associate Professor</strong>, Ph.D. Supervisor and M.S. Supervisor,<br>
+            School of Computer Science and Technology,<br>
+            Xidian University,<br>
+            Xi'an, Shaanxi, China
+          </p>
+
+          <p>
+            E-mail:
+            <a href="mailto:houzhangfang@xidian.edu.cn">houzhangfang@xidian.edu.cn</a>
+          </p>
+
+          <p class="links">
+            <a href="https://scholar.google.com/citations?user=C7CWyGwAAAAJ&hl=en" target="_blank" rel="noopener">[Google Scholar]</a>
+            <a href="https://orcid.org/0000-0002-7949-8846" target="_blank" rel="noopener">[ORCID]</a>
+            <a href="https://faculty.xidian.edu.cn/FHZ/zh_CN/index.htm" target="_blank" rel="noopener">[Xidian]</a>
+            <a href="https://github.com/IVPLabs/UniCD" target="_blank" rel="noopener">[GitHub / UniCD]</a>
+          </p>
+        </div>
+      </section>
+
+
+      <section id="about">
+        <h2>About me</h2>
+
+        <p>
+          I am an Associate Professor, Ph.D. Supervisor and M.S. Supervisor in the
+          School of Computer Science and Technology, Xidian University.
+          I received my Ph.D. degree from Huazhong University of Science and Technology
+          in 2014, where I worked on image processing and intelligent visual perception.
+        </p>
+
+        <p>
+          From 2014 to 2017, I conducted research and teaching at the National Laboratory
+          of Radar Signal Processing, Xidian University. Since 2018, I have been with the
+          School of Computer Science and Technology, Xidian University.
+        </p>
+
+        <p>
+          My current research focuses on intelligent visual perception and understanding,
+          deep learning and large models, multispectral image processing, object detection
+          and tracking, system software development, and real-time embedded deployment.
+        </p>
+
+        <p class="note">
+          I welcome motivated undergraduate, master's, and Ph.D. students who are interested
+          in computer vision, intelligent image processing, infrared target perception,
+          deep learning, and related research. Please contact me by e-mail with your CV.
+        </p>
+      </section>
+
+
+      <section id="research">
+        <h2>Research</h2>
+
+        <p>My research interests include:</p>
+        <ul>
+          <li>
+            <strong>Intelligent Visual Perception and Understanding:</strong>
+            detection, recognition and tracking of moving targets in infrared, visible-light
+            and radar data.
+          </li>
+          <li>
+            <strong>Infrared UAV / Small Target Perception:</strong>
+            robust detection and tracking of weak targets under complex backgrounds,
+            nonuniformity, blur and other adverse imaging conditions.
+          </li>
+          <li>
+            <strong>Intelligent Multispectral Image Enhancement and Restoration:</strong>
+            nonuniformity correction, blind deconvolution, denoising, super-resolution
+            and image restoration.
+          </li>
+          <li>
+            <strong>Industrial Intelligent Machine Vision:</strong>
+            visual inspection and recognition algorithms for practical industrial systems.
+          </li>
+          <li>
+            <strong>AI Systems and Deployment:</strong>
+            large-model applications, system software development and real-time embedded deployment.
+          </li>
+        </ul>
+      </section>
+
+
+      <section id="news">
+        <h2>News</h2>
+
+        <ul class="news-list">
+          <li>
+            <span class="news-date">2026</span>
+            Our work on denoising-enhanced coarse-to-fine infrared small target detection
+            has been accepted by <strong>ECCV 2026</strong>.
+          </li>
+          <li>
+            <span class="news-date">2026</span>
+            Our work <em>Blur-Robust Detection via Feature Restoration</em>
+            has been published at <strong>AAAI 2026</strong>.
+          </li>
+          <li>
+            <span class="news-date">2026</span>
+            Our work on spatio-temporal context learning for moving infrared small target detection
+            has been published at <strong>AAAI 2026</strong>.
+          </li>
+          <li>
+            <span class="news-date">2025</span>
+            Our work <em>Detection-Friendly Nonuniformity Correction: A Union Framework for
+            Infrared UAV Target Detection</em> was accepted by <strong>CVPR 2025</strong>
+            and selected as a <strong>Highlight</strong>.
+          </li>
+          <li>
+            <span class="news-date">2024</span>
+            Our works on infrared UAV target detection and tracking were published in
+            <strong>IEEE TGRS</strong>.
+          </li>
+        </ul>
+      </section>
+
+
+      <section id="publications">
+        <h2>Selected Publications</h2>
+
+        <p>
+          For a more complete list, please see
+          <a href="https://scholar.google.com/citations?user=C7CWyGwAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>
+          or my
+          <a href="https://faculty.xidian.edu.cn/FHZ/zh_CN/index.htm" target="_blank" rel="noopener">Xidian University homepage</a>.
+        </p>
+
+        <ol class="pubs">
+          <li>
+            Ruixuan Huang, <span class="me">Houzhang Fang</span>, Qiuhuan Chen, Xiaolin Wang,
+            Yi Chang, Luxin Yan.
+            <strong>Denoising-Enhanced Coarse-to-Fine Infrared Small Target Detection with
+            Attention Prior-Guided Knowledge Distillation.</strong>
+            <span class="venue">European Conference on Computer Vision (ECCV)</span>, 2026.
+            <a href="https://arxiv.org/abs/2606.21956" target="_blank" rel="noopener">[arXiv]</a>
+          </li>
+
+          <li>
+            Xiaolin Wang, <span class="me">Houzhang Fang</span>, Qingshan Li, Lu Wang,
+            Yi Chang, Luxin Yan.
+            <strong>Blur-Robust Detection via Feature Restoration: An End-to-End Framework
+            for Prior-Guided Infrared UAV Target Detection.</strong>
+            <span class="venue">AAAI Conference on Artificial Intelligence (AAAI)</span>, 2026.
+            <a href="https://ojs.aaai.org/index.php/AAAI/article/view/37986" target="_blank" rel="noopener">[Paper]</a>
+            <a href="https://github.com/IVPLabX/JFD3" target="_blank" rel="noopener">[Code]</a>
+          </li>
+
+          <li>
+            Shukai Guo, <span class="me">Houzhang Fang</span>, Qiuhuan Chen, Xiaolin Wang,
+            Yi Chang, Luxin Yan.
+            <strong>Spatio-Temporal Context Learning with Temporal Difference Convolution
+            for Moving Infrared Small Target Detection.</strong>
+            <span class="venue">AAAI Conference on Artificial Intelligence (AAAI)</span>, 2026.
+          </li>
+
+          <li>
+            <span class="me">Houzhang Fang</span>, Xiaolin Wang, Zengyang Li, Lu Wang,
+            Qingshan Li, Yi Chang, Luxin Yan.
+            <strong>Detection-Friendly Nonuniformity Correction: A Union Framework for
+            Infrared UAV Target Detection.</strong>
+            <span class="venue">IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)</span>,
+            2025, pp. 11898-11907.
+            <span class="tag highlight">Highlight</span>
+            <a href="https://openaccess.thecvf.com/content/CVPR2025/html/Fang_Detection-Friendly_Nonuniformity_Correction_A_Union_Framework_for_Infrared_UAV_Target_CVPR_2025_paper.html" target="_blank" rel="noopener">[Paper]</a>
+            <a href="https://github.com/IVPLabs/UniCD" target="_blank" rel="noopener">[Code & Dataset]</a>
+          </li>
+
+          <li>
+            Chenxing Wu, <span class="me">Houzhang Fang</span>, Kun Bai, Xiaolin Wang,
+            Xiyang Liu, Yi Chang, Luxin Yan.
+            <strong>Infrared UAV Target Tracking with Dynamic Feature Refinement and
+            Global Contextual Attention Knowledge Distillation.</strong>
+            <span class="venue">IEEE Transactions on Multimedia</span>, 2025/2026.
+            <a href="https://arxiv.org/abs/2512.04581" target="_blank" rel="noopener">[arXiv]</a>
+          </li>
+
+          <li>
+            Lan Ding, <span class="me">Houzhang Fang</span>, Xiaolin Wang, Yi Chang,
+            Luxin Yan, Li Liu, Jinrui Fang.
+            <strong>SCINet: Spatial and Contrast Interactive Super-Resolution Assisted
+            Infrared UAV Target Detection.</strong>
+            <span class="venue">IEEE Transactions on Geoscience and Remote Sensing (TGRS)</span>,
+            vol. 62, pp. 1-22, 2024.
+          </li>
+
+          <li>
+            <span class="me">Houzhang Fang</span>, Chenxing Wu, Xiaolin Wang, Fan Zhou,
+            Yi Chang, Luxin Yan.
+            <strong>Online Infrared UAV Target Tracking with Enhanced Context-Awareness
+            and Pixel-Wise Attention Modulation.</strong>
+            <span class="venue">IEEE Transactions on Geoscience and Remote Sensing (TGRS)</span>,
+            vol. 62, pp. 1-17, 2024.
+          </li>
+
+          <li>
+            <span class="me">Houzhang Fang</span>, Zikai Liao, Lu Wang, Qingshan Li,
+            Yi Chang, Luxin Yan, Xuhua Wang.
+            <strong>DANet: Multi-scale UAV Target Detection with Dynamic Feature Perception
+            and Scale-aware Knowledge Distillation.</strong>
+            <span class="venue">ACM International Conference on Multimedia (ACM MM)</span>,
+            pp. 2121-2130, 2023.
+          </li>
+
+          <li>
+            Zikai Liao, <span class="me">Houzhang Fang</span>, Xuhua Wang, Yi Chang, Luxin Yan.
+            <strong>Differentiated Attention Guided Network over Hierarchical and Aggregated
+            Features for Intelligent UAV Surveillance.</strong>
+            <span class="venue">IEEE Transactions on Industrial Informatics</span>,
+            vol. 19, no. 9, pp. 9909-9920, 2023.
+          </li>
+
+          <li>
+            Houzhang Fang, Lan Ding, Liming Wang, Yi Chang, Luxin Yan, Jinhui Han.
+            <strong>Infrared Small UAV Target Detection Based on Depthwise Separable Residual
+            Dense Network and Multiscale Feature Fusion.</strong>
+            <span class="venue">IEEE Transactions on Instrumentation and Measurement</span>,
+            vol. 71, pp. 1-20, 2022.
+          </li>
+        </ol>
+      </section>
+
+
+      <div class="footer">
+        © <span id="year"></span> Houzhang Fang ·
+        <a href="https://houzhangfang.github.io/">houzhangfang.github.io</a>
+        <br>
+        Last updated: August 2026
+      </div>
+    </main>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
